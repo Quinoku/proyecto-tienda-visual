@@ -1,22 +1,21 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic);
 
 
-/** VARIABLES */
+/* Variables */
 :root{
-     --color-primario: #0D6EFD;
-     --color-secundario: #0B5ED7;
-     --color-oscuro: #122936; 
+     --color-primario: #ff772e;
+     --color-secundario: #e26420;
+     --color-oscuro: #3e2111; 
 }
 
 
-/** GENERALES */
+/* General */
 *{
      margin: 0;
      padding: 0;
      box-sizing: border-box;
      font-family: 'Open Sans', sans-serif;
 }
-
 
 a{
      text-decoration: none;
@@ -26,7 +25,6 @@ a{
      font-weight: 700;
 }
 
-
 h1.title{
      text-align: center;
      font-weight: 100;
@@ -35,8 +33,7 @@ h1.title{
      margin: 30px 0;
 }
 
-
-.btn{
+.btn{ /* No le voy a indicar un tamaño porque no quiero que todos mis botones sean iguales, iré especificanto el tamaño para cada uno */
      background: var(--color-primario);
      color: #FFF;
      border: none;
@@ -54,8 +51,7 @@ h1.title{
 }
 
 
-
-/** MENU PRINCIPAL */
+/* Menu de navegacion */
 .menu-principal{
      width: 100%;
      height: 50px;
@@ -63,11 +59,11 @@ h1.title{
 }
 
 .menu-principal div{
-     float: left;
+     float: left; /* Así los elementos de ambos contenedores se alinean seguidos a la izquierda */
 }
 
 .nav-imagen{
-     height: 100%;
+     height: 100%; /* Para que abarque el 100% del alto del menu de navegacion */
 }
 
 .nav-imagen img{
@@ -79,11 +75,11 @@ h1.title{
 }
 
 .nav-enlaces a{
-     line-height: 50px;
+     line-height: 50px; /* Al ser el alto del menu 50px, esto nos permite centrarlo horizontalmente */
      margin: 0 20px;
      color: #000;
      padding: 4px 10px;
-     border: 2px solid transparent;
+     border: 2px solid transparent; /* Este borde transparente es para que cree ese espacio, así al hacer hover el elemento no se moverá al tener que crear espacio nuevo para el border que se crea */
      transition: all .5s;
 }
 
@@ -96,19 +92,18 @@ h1.title{
 }
 
 
-
-/** HEADER */
+/* Header */
 header{
      width: 100%;
-     height: calc(100vh - 50px);
+     height: calc(100vh - 50px); /* Para que abarque el 100%, pero restándole el menu de navegación */
      position: relative;
-     background: url(img/wallpaper2.jpg);
+     background: url(img/wallpaper.png);
      background-size: cover;
      background-position: center;
-     background-attachment: fixed;
+     background-attachment: fixed; /* Para que se quede fija en el fondo */
 }
 
-header::before{
+header::before{ /* Para que ese fondo sea un poco mas oscuro creo un elemento del mismo tamaño y creo un background negro con un poco de opacidad, así el texto se podrá leer un poco mejor */
      content: '';
      position: absolute;
      top: 0;
@@ -118,7 +113,7 @@ header::before{
      background: rgba(0, 0, 0, 0.3);
 }
 
-header div{
+header div{ /* Centramos los elementos del header */
      width: 100%;
      position: absolute;
      top: 50%;
@@ -136,11 +131,10 @@ header h1{
      text-shadow: 5px 0 10px #000;
 }
 
-header button{
+header button{ /* Especifico el tamaño de mi boton */
      width: 180px;
      height: 50px;
 }
-
 
 
 /**  PRODUCTOS  */
@@ -206,7 +200,7 @@ header button{
 }
 
 .card:hover .img-card img{
-    max-width: 60%; 
+     max-width: 60%; 
 }
 
 
