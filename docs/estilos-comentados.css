@@ -1,0 +1,505 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,regular,italic,600,600italic,700,700italic,800,800italic);
+
+
+/* Variables */
+:root{
+     --color-primario: #ff772e;
+     --color-secundario: #e26420;
+     --color-oscuro: #3e2111; 
+}
+
+
+/* General */
+*{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Open Sans', sans-serif;
+}
+
+a{
+     text-decoration: none;
+     font-size: 14px;
+     text-transform: uppercase;
+     letter-spacing: 1px;
+     font-weight: 700;
+}
+
+h1.title{
+     text-align: center;
+     font-weight: 100;
+     font-size: 55px;
+     letter-spacing: 2px;
+     margin: 30px 0;
+}
+
+.btn{ /* No le voy a indicar un tamaño porque no quiero que todos mis botones sean iguales, iré especificanto el tamaño para cada uno */
+     background: var(--color-primario);
+     color: #FFF;
+     border: none;
+     font-size: 16px;
+     text-transform: uppercase;
+     letter-spacing: 1px;
+     cursor: pointer;
+     border-radius: 5px;
+     transition: all .5s;
+}
+
+.btn:hover{
+     transform: scale(1.1);
+     background: var(--color-secundario);
+}
+
+
+/* Menu de navegacion */
+.menu-principal{
+     width: 100%;
+     height: 50px;
+     background: #FFF;
+}
+
+.menu-principal div{
+     float: left; /* Así los elementos de ambos contenedores se alinean seguidos a la izquierda */
+}
+
+.nav-imagen{
+     height: 100%; /* Para que abarque el 100% del alto del menu de navegacion */
+}
+
+.nav-imagen img{
+     width: 50%;
+     position: relative;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+}
+
+.nav-enlaces a{
+     line-height: 50px; /* Al ser el alto del menu 50px, esto nos permite centrarlo horizontalmente */
+     margin: 0 20px;
+     color: #000;
+     padding: 4px 10px;
+     border: 2px solid transparent; /* Este borde transparente es para que cree ese espacio, así al hacer hover el elemento no se moverá al tener que crear espacio nuevo para el border que se crea */
+     transition: all .5s;
+}
+
+.nav-enlaces a:first-child{ /* Hago que el padding izquierdo del primer a sea 0 en vez de 20px */
+     margin: 0 20px 0 0;
+}
+
+.nav-enlaces a.active{
+     color: var(--color-primario);
+}
+
+.nav-enlaces a:hover{
+     border: 2px solid var(--color-primario);
+}
+
+
+/* Header */
+header{
+     width: 100%;
+     height: calc(100vh - 50px); /* Para que abarque el 100%, pero restándole el menu de navegación */
+     position: relative;
+     background: url(img/wallpaper.png);
+     background-size: cover;
+     background-position: center;
+     background-attachment: fixed; /* Para que se quede fija en el fondo */
+}
+
+header::before{ /* Para que ese fondo sea un poco mas oscuro creo un elemento del mismo tamaño y creo un background negro con un poco de opacidad, así el texto se podrá leer un poco mejor */
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.3);
+}
+
+header div{ /* Centramos los elementos del header */
+     width: 100%;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     text-align: center;
+}
+
+header h1{
+     color: #FFF;
+     font-size: 50px;
+     letter-spacing: 2px;
+     font-weight: 100;
+     margin: 20px 0;
+     text-shadow: 5px 0 10px #000;
+}
+
+header button{ /* Especifico el tamaño de mi boton */
+     width: 180px;
+     height: 50px;
+}
+
+
+/*  Seccion de productos  */
+.productos{
+     padding: 30px 100px;
+}
+
+.card{
+     position: relative;
+     width: 33%;
+     height: 420px;
+     background: var(--color-oscuro);
+     overflow: hidden; /* Para que los elementos que sobresalgan no se vean */
+     float: left; /* Para que se colequen uno al lado de otro */
+     border: none;
+     margin: 1px; /* Para que se vea una minima separación entre cada tarjeta */
+}
+
+.card::before{ /* Ysamos el pseudoelemento before para crear la línea que divide la card en dos partes de dos colores */
+     content: '';
+     position: absolute;
+     top: -50%;
+     width: 100%;
+     height: 100%;
+     background: var(--color-primario);
+     transform: skewY(345deg); /* Asi giro la linea divisoria */
+     transition: all .5s;
+}
+
+.card:hover::before{
+     top: -70%; /* Asi ocupa un 20% más */
+     transform: skewY(390deg); /* Y asi se gira, ambas cosas a la vez */
+}
+
+.card::after{ /* Pseudoelemento para incorporar la palabra Cultura*/
+     content: 'Cultura';
+     position: absolute;
+     bottom: 0;
+     left: 50px;
+     font-weight: 600;
+     font-size: 8em;
+     color: rgba(0, 0, 0, 0.1); /* Para que sea transparente */
+}
+
+.card .img-card{
+     position: absolute;
+     top: 35%;
+     left: 50%;
+     transform: translate(-50%, -50%); /* Lo estamos centrando, pero colocando un poco más arriba */
+     width: 100%; /* Que el contenedor abarque el 100% */
+}
+
+.card .img-card img{
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     max-width: 60%; /* Limitamos su tamaño a un 60% como máximo de su contenedor */
+     transition: all .5s;
+}
+
+.card:hover .img-card img{
+     max-width: 50%; /* Para que cuando hacemos hover se reduzca su tamaño un 10% */
+}
+
+.content-card{
+     width: 100%;
+     position: absolute;
+     bottom: 12%; /* Para ubicarlo abajo */
+     text-align: center;
+     z-index: 1; /* Para que el contenido esté arriba y se vea */
+}
+
+.content-card h3{
+     font-size: 2vw;
+     color: #FFF;
+     font-weight: 600;
+     text-transform: uppercase;
+     letter-spacing: 1px;
+}
+
+.content-card .price{
+     font-size: 30px;
+     color: #FFF;
+     font-weight: 200;
+     text-transform: uppercase;
+     letter-spacing: 1px;
+}
+
+.content-card .buy{
+     position: relative;
+     top: 200px;
+     opacity: 0; /* Con la posición y la opacidad lo coloco fuera e invisible */
+     padding: 10px 30px;
+     margin-top:15px;
+}
+
+.card:hover .content-card .buy{
+     top: 20px;
+     opacity: 1; /* Al hacer hover lo hago subir y que sea visible */
+}
+
+
+/* Mensaje */
+.mensaje{
+     display: inline-block;
+     position: relative;
+     width: 100%;
+     height: 400px;
+     background: url(img/wallpaper02.jpg);
+     background-attachment: fixed;
+     background-size: cover;
+     margin-top: 50px;
+}
+
+.mensaje::before{ /* Creamos el pseudoelemento para oscurecer la imagen ligeramente */
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.3);
+}
+
+.mensaje p{
+     width: 100%;
+     text-align: center;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     color: #FFF;
+     font-size: 65px;
+     font-weight: 100;
+     text-shadow: 5px 0 10px #000;
+}
+
+
+/*  Destacado  */
+.favorito{
+     padding: 20px 150px;
+     height: 100vh;
+     position: relative;
+}
+
+.favorito::before{ /* Creo dos pseudoelemento para poner de fondo las palabras best y seller */
+     content: 'Seller';
+     position: absolute;
+     bottom: 2%;
+     left: 0;
+     font-weight: 600;
+     font-size: 10vw;
+     color: rgba(0, 0, 0, 0.1);
+     z-index: -1;
+}
+
+.favorito::after{
+     content: 'Best';
+     position: absolute;
+     top: 2%;
+     right: 0;
+     font-weight: 600;
+     font-size: 10vw;
+     color: rgba(0, 0, 0, 0.05);
+     z-index: -1;
+}
+
+.container-favorito > div{ /* Esto afecta a todos los div que sean hijos directos de la clase .container-favorito, (pero no a los nietos) */
+     float: left; /* Asi los div se van acomodando. Esta propiedad necesita que indiquemos el tamaño de cada contenedor/elemento */
+     margin: 30px; /* Y los separo ligeramente */
+}
+
+.imagen-fav{
+     width: 40%;
+     position: relative;
+}
+
+.imagen-fav img{
+     width: 100%;
+     height: 100%; /* Le decimos que se acomode al tamaño del contenedor */
+     transition: all .5s;
+}
+
+.imagen-fav::before{ /* Creamos la insignia para indicar que es un superventas */
+     content: 'Super ventas';
+     position: absolute;
+     top: 0;
+     left: 0;
+     background: var(--color-secundario);
+     width: 50px;
+     height: 50px;
+     padding: 10px;
+     text-align: center;
+     border-radius: 50%;
+     color: #FFF;
+     transform: rotate(-10deg);
+     box-shadow: 0 0 10px 5px var(--color-secundario);
+     z-index: 1;
+     transition: all .5s;
+}
+
+.imagen-fav:hover::before{
+     transform: scale(1.2) rotate(-20deg);
+}
+
+.container-favorito:hover .imagen-fav img{
+     transform: scale(1.1); /* Para que la imagen tambien se haga un poco más grande cuando se haga hover */
+}
+
+.content-fav{
+     width: 40%;
+     height: 100%;
+}
+
+.content-fav h1{
+     font-size: 40px;
+     font-weight: 400;
+}
+
+.content-fav h3{
+     text-transform: uppercase;
+     font-weight: 600;
+     letter-spacing: 2px;
+     color: var(--color-secundario);
+}
+
+.content-fav .text p{
+     text-align: justify;
+     margin: 20px 0;
+}
+
+.content-inferior{
+     width: 100%;
+     height: 50px;
+}
+
+.content-inferior .price{
+     float: left;
+     font-size: 40px;
+     line-height: 50px;
+     font-weight: 600;
+     color: var(--color-oscuro);
+}
+
+.content-inferior .buy{
+     float: right; /* Lo flotamos a la derecha, para que esté el precio en un lado y el botón en el otro */
+     width: 150px;
+     line-height: 50px;
+     text-align: center;
+}
+
+
+/* Subscribete  */
+.subscribe{ /* Contenedor principal */
+     width: 100%;
+     height: 300px;
+     background: var(--color-oscuro);
+     margin-top: 30px;
+     position: relative;
+}
+
+.subscribe::before{ /* Para crear el subscribete de fondo*/
+     content: 'Subscríbete';
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     width: 100%;
+     text-align: center;
+     font-weight: 600;
+     font-size: 15vw;
+     color: rgba(0, 0, 0, 0.08);
+}
+
+.search{ /* Creo la forma del boton con forma redondeada */
+     position: relative;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     background: #e5e5e5;
+     width: 60px;
+     height: 60px;
+     border-radius: 50px;
+     padding: 10px;
+     transition: all .5s;
+}
+
+.search:hover{ /* Aumento el tamaño al hacer hover en el boton */
+     width: 300px;
+}
+
+.search:hover .search-text{ /* Al hacer hover el input text adquiere un ancho del 90% y ahora si se veria */
+     width: 90%;
+}
+
+.search:hover .search-icon{ /* AL hacer hover el icono cambia de color */
+     background: var(--color-primario);
+     color: #FFF;
+}
+
+.search-icon{
+     position: absolute;
+     top: 0;
+     right: 0; /* Al estar a la derecha, cuando hagamos hover y amplie su tamaño, se moverá a la derecha */
+     color:var(--color-primario); /* Le doy un color al icono */
+     width: 60px;
+     height: 60px;
+     border-radius: 50%; /* Con estos 3 parámetros el icono ocuparía todo el contenedor */
+     line-height: 60px !important; /* Para que el icono permanezca alineado horizontalmente siempre */
+     text-align: center; /* Para centrarlo */
+     font-size: 20px;
+     cursor: pointer;
+     transition: all .5s;
+}
+
+.search-icon:hover{ /* Aumenta de tamaño cuando pasamos por encima con el input desplegado */
+     transform: scale(1.2);
+}
+
+.search-text{
+     border: none;
+     background: none;
+     outline: none;
+     float: left;
+     padding: 0 10px;
+     width: 0; /* Así hacemos que el input tipo text no se vea, ya que tiene 0 de ancho */
+     height: 100%;
+     color: #000;
+     font-size: 16px;
+     transition: all .5s;
+}
+
+
+/* Footer rrss */
+footer{
+     width: 100%;
+     height: 100px;
+     background: #2c1f0f;
+}
+
+footer div{
+     float: left;
+     width: 25%; /* Cada div ocupará un 25% del footer */
+     height: 100%;
+     line-height: 100px;
+     transition: all .5s;
+}
+
+footer div:hover{
+     background: #251a0d;
+}
+
+footer div:hover a{
+     font-size: 35px;
+}
+
+footer div a{
+     display: block;
+     text-align: center;
+     font-size: 30px;
+     color: #CCC;
+     transition: all .5s;
+}
